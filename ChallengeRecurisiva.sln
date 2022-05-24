@@ -11,11 +11,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3-DataAccess", "3-DataAcces
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4-Common", "4-Common", "{B2CAB42E-A6F2-43F3-9480-AE7A8FD55DED}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChallengeRecursiva.DataAccess", "ChallengeRecursiva.DataAccess\ChallengeRecursiva.DataAccess.csproj", "{844918F8-2CA8-47BA-BD75-61FBCBE4B604}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ChallengeRecursiva.DataAccess", "ChallengeRecursiva.DataAccess\ChallengeRecursiva.DataAccess.csproj", "{844918F8-2CA8-47BA-BD75-61FBCBE4B604}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChallengeRecursiva.Business", "ChallengeRecursiva.Business\ChallengeRecursiva.Business.csproj", "{3B1FF57C-E1DF-4C54-9911-361FE153B34B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ChallengeRecursiva.Business", "ChallengeRecursiva.Business\ChallengeRecursiva.Business.csproj", "{3B1FF57C-E1DF-4C54-9911-361FE153B34B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChallengeRecursiva.Common", "ChallengeRecursiva.Common\ChallengeRecursiva.Common.csproj", "{4EF53052-38EE-49EC-8F50-4427C5160FEF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ChallengeRecursiva.Common", "ChallengeRecursiva.Common\ChallengeRecursiva.Common.csproj", "{4EF53052-38EE-49EC-8F50-4427C5160FEF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChallengeRecursiva.Web", "ChallengeRecursiva.Web\ChallengeRecursiva.Web.csproj", "{D88FA005-667E-46AE-819B-A8C2C6A4884E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -35,6 +37,10 @@ Global
 		{4EF53052-38EE-49EC-8F50-4427C5160FEF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4EF53052-38EE-49EC-8F50-4427C5160FEF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4EF53052-38EE-49EC-8F50-4427C5160FEF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D88FA005-667E-46AE-819B-A8C2C6A4884E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D88FA005-667E-46AE-819B-A8C2C6A4884E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D88FA005-667E-46AE-819B-A8C2C6A4884E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D88FA005-667E-46AE-819B-A8C2C6A4884E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -43,6 +49,7 @@ Global
 		{844918F8-2CA8-47BA-BD75-61FBCBE4B604} = {88D74933-B4E8-47E3-A69C-F44D0A6DBC50}
 		{3B1FF57C-E1DF-4C54-9911-361FE153B34B} = {1377C35A-929F-4FD7-978B-0AF6DF49DC9E}
 		{4EF53052-38EE-49EC-8F50-4427C5160FEF} = {B2CAB42E-A6F2-43F3-9480-AE7A8FD55DED}
+		{D88FA005-667E-46AE-819B-A8C2C6A4884E} = {A99B2412-BD30-48E7-8689-246FFA3A5DF4}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {66941E9B-8C25-44C1-B3EE-3528ED9AF9B0}
