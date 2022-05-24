@@ -8,6 +8,11 @@ namespace ChallengeRecursiva.DataAccess.Interfaces
 {
     public interface ISpecificationRepository<T> where T : EntityBase
     {
-       
+        Expression<Func<T,bool>> Criteria { get; }
+        List<Expression<Func<T,object>>> Includes { get; }
+        List<string> IncludeNames { get; }
+
+        int Skip { get; }
+        int Take { get; }
     }
 }

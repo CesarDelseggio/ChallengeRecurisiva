@@ -13,5 +13,6 @@ namespace ChallengeRecursiva.DataAccess.Interfaces
         void Insert(T entity);
         void Update(T entity);
         void Delete(int id);
+        void DeleteAll();
     }
 }
