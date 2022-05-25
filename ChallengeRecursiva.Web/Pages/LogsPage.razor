@@ -1,12 +1,38 @@
 ﻿@page "/logs"
 @using ChallengeRecursiva.Business.Models.Logs
-<h3>LogPage</h3>
+@inject ChallengeRecursiva.Business.Interfaces.ILogService Service
+
+<h3>Listado de Logs del sistema</h3>
+
+<div>
+    <table>
+        <thead>
+            <tr>
+                <th>Fecha</th>
+                <th>Titulo</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach (var item in logs)
+            {
+                <tr>
+                    <td>@item.Date</td>
+                    <td>@item.Title</td>
+                    <td><button>Ver</button></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
 
 @code {
-    private List<LogDTO> _logs;
+    private List<LogDTO> logs = new List<LogDTO>();
 
-    protected override Task OnInitializedAsync()
+    protected override async Task OnInitializedAsync()
     {
-        return base.OnInitializedAsync();
-    }
+        base.OnInitializedAsync();
+
+        logs = await Service.GetAll();
+   }
 }

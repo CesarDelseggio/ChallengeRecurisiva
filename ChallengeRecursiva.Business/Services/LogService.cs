@@ -1,4 +1,5 @@
 ﻿using ChallengeRecursiva.Business.Interfaces;
+using ChallengeRecursiva.Business.Models.Logs;
 using ChallengeRecursiva.DataAccess.Data.Models;
 using ChallengeRecursiva.DataAccess.Interfaces;
 using ChallengeRecursiva.DataAccess.Repository;
@@ -11,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace ChallengeRecursiva.Business.Services
 {
-    public class LogService : IService<Log>
+    public class LogService : ILogService
     {
         private readonly UnitOfWork _unitOfWork;
         private readonly IRepository<Log> _repository;
@@ -26,34 +27,44 @@ namespace ChallengeRecursiva.Business.Services
             return await _repository.Count();
         }
 
-        public async Task<int> Count(ISpecificationRepository<Log> spec)
+        public async Task<int> Count(ISpecificationRepository<LogDTO> spec)
         {
-            return await _repository.Count(spec);
+            return await _repository.Count(spec as ISpecificationRepository<Log>);
         }
 
-        public async Task<Log> Get(int id)
+        public async Task<LogDetailDTO> Get(int id)
         {
-            return await _repository.Get(id);
+            var result = await _repository.Get(id);
+
+            return AutoMapper.Mapper.Map<LogDetailDTO>(result);
         }
 
-        public async Task<List<Log>> GetAll()
+        public async Task<List<LogDTO>> GetAll()
         {
-            return await _repository.GetAll().ToListAsync();
+            var result = await _repository.GetAll().ToListAsync();
+
+            return AutoMapper.Mapper.Map<List<LogDTO>>(result);
         }
 
-        public async Task<List<Log>> GetAll(ISpecificationRepository<Log> spec)
+        public async Task<List<LogDTO>> GetAll(ISpecificationRepository<LogDTO> spec)
         {
-            return await _repository.GetAll(spec).ToListAsync();
+            var result = await _repository.GetAll(spec as ISpecificationRepository<Log>).ToListAsync();
+
+            return AutoMapper.Mapper.Map<List<LogDTO>>(result);
         }
 
-        public void Insert(Log entity)
+        public void Insert(LogEditDTO entity)
         {
-            _repository.Insert(entity);
+            var entityModel = AutoMapper.Mapper.Map<Log>(entity);
+            
+            _repository.Insert(entityModel);
         }
 
-        public void Update(Log entity)
+        public void Update(LogEditDTO entity)
         {
-            _repository.Update(entity);
+            var entityModel = AutoMapper.Mapper.Map<Log>(entity);
+
+            _repository.Update(entityModel);
         }
 
         public void Delete(int id)

@@ -1,10 +1,11 @@
-﻿using System;
+﻿using ChallengeRecursiva.DataAccess.Data.Models;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace ChallengeRecursiva.Business.Models.Logs
 {
-    public class LogEditDTO : BaseDTO
+    public class LogEditDTO : EntityBase
     {
         public DateTime Date { get; set; }
         public string Title { get; set; }
