@@ -17,4 +17,8 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\ChallengeRecursiva.Common\ChallengeRecursiva.Common.csproj" />
+  </ItemGroup>
+
 </Project>

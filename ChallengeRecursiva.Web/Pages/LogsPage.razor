@@ -1,5 +1,6 @@
 ﻿@page "/logs"
 @using ChallengeRecursiva.Business.Models.Logs
+@using ChallengeRecursiva.Business.Specifications.Logs
 @inject ChallengeRecursiva.Business.Interfaces.ILogService Service
 
 <h3>Listado de Logs del sistema</h3>
@@ -32,7 +33,8 @@
     protected override async Task OnInitializedAsync()
     {
         base.OnInitializedAsync();
-
-        logs = await Service.GetAll();
+        var spec = new LogFilterByTitleSpec("First");
+        
+        logs = await Service.GetAll(spec);
    }
 }

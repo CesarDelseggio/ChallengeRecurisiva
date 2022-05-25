@@ -1,12 +1,12 @@
-﻿using ChallengeRecursiva.DataAccess.Data.Models;
+﻿using ChallengeRecursiva.Common.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Text;
 
-namespace ChallengeRecursiva.DataAccess.Interfaces
+namespace ChallengeRecursiva.Common.Interfaces
 {
-    public interface ISpecificationRepository<T> where T : EntityBase
+    public interface ISpecification<T> where T : EntityBase
     {
         Expression<Func<T,bool>> Criteria { get; }
         List<Expression<Func<T,object>>> Includes { get; }

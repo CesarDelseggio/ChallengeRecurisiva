@@ -1,5 +1,7 @@
 ﻿using ChallengeRecursiva.Business.Models;
 using ChallengeRecursiva.Business.Models.Logs;
+using ChallengeRecursiva.Common.Interfaces;
+using ChallengeRecursiva.Common.Models;
 using ChallengeRecursiva.DataAccess.Data.Models;
 using ChallengeRecursiva.DataAccess.Interfaces;
 using System;
@@ -13,9 +15,9 @@ namespace ChallengeRecursiva.Business.Interfaces
     {
         Task<LogDetailDTO> Get(int id);
         Task<List<LogDTO>> GetAll();
-        Task<List<LogDTO>> GetAll(ISpecificationRepository<LogDTO> spec);
+        Task<List<LogDTO>> GetAll(ISpecification<Log> spec);
         Task<int> Count();
-        Task<int> Count(ISpecificationRepository<LogDTO> spec);
+        Task<int> Count(ISpecification<Log> spec);
 
         void Insert(LogEditDTO entity);
         void Update(LogEditDTO entity);

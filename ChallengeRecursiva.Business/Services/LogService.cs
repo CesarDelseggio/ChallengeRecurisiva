@@ -1,5 +1,8 @@
 ﻿using ChallengeRecursiva.Business.Interfaces;
 using ChallengeRecursiva.Business.Models.Logs;
+using ChallengeRecursiva.Common.Interfaces;
+using ChallengeRecursiva.Common.Models;
+using ChallengeRecursiva.Common.Specification;
 using ChallengeRecursiva.DataAccess.Data.Models;
 using ChallengeRecursiva.DataAccess.Interfaces;
 using ChallengeRecursiva.DataAccess.Repository;
@@ -27,9 +30,9 @@ namespace ChallengeRecursiva.Business.Services
             return await _repository.Count();
         }
 
-        public async Task<int> Count(ISpecificationRepository<LogDTO> spec)
+        public async Task<int> Count(ISpecification<Log> spec)
         {
-            return await _repository.Count(spec as ISpecificationRepository<Log>);
+            return await _repository.Count(spec);
         }
 
         public async Task<LogDetailDTO> Get(int id)
@@ -46,9 +49,9 @@ namespace ChallengeRecursiva.Business.Services
             return AutoMapper.Mapper.Map<List<LogDTO>>(result);
         }
 
-        public async Task<List<LogDTO>> GetAll(ISpecificationRepository<LogDTO> spec)
+        public async Task<List<LogDTO>> GetAll(ISpecification<Log> spec)
         {
-            var result = await _repository.GetAll(spec as ISpecificationRepository<Log>).ToListAsync();
+            var result = await _repository.GetAll(spec).ToListAsync();
 
             return AutoMapper.Mapper.Map<List<LogDTO>>(result);
         }

@@ -1,4 +1,4 @@
-﻿using ChallengeRecursiva.DataAccess.Data.Models;
+﻿using ChallengeRecursiva.Common.Models;
 using System;
 using System.Collections.Generic;
 using System.Text;
