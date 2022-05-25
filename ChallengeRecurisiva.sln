@@ -17,7 +17,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ChallengeRecursiva.Business
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ChallengeRecursiva.Common", "ChallengeRecursiva.Common\ChallengeRecursiva.Common.csproj", "{4EF53052-38EE-49EC-8F50-4427C5160FEF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChallengeRecursiva.Web", "ChallengeRecursiva.Web\ChallengeRecursiva.Web.csproj", "{D88FA005-667E-46AE-819B-A8C2C6A4884E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ChallengeRecursiva.Web", "ChallengeRecursiva.Web\ChallengeRecursiva.Web.csproj", "{D88FA005-667E-46AE-819B-A8C2C6A4884E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

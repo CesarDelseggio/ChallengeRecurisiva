@@ -6,6 +6,8 @@ using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using AutoMapper;
+using ChallengeRecursiva.Business.Mapping;
 
 namespace ChallengeRecursiva.Business
 {
@@ -16,6 +18,10 @@ namespace ChallengeRecursiva.Business
             services.AddDataAccessServices(configuration);
 
             services.AddScoped<IService<Log>, LogService>();
+
+            //configura automapper with data of MappingProfile
+            Mapper.Initialize(cfg => cfg.AddProfile<MappingProfile>());
+            services.AddAutoMapper();
         }
     }
 }

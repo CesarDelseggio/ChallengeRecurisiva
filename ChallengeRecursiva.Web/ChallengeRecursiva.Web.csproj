@@ -16,4 +16,8 @@
     <ProjectReference Include="..\ChallengeRecursiva.Common\ChallengeRecursiva.Common.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Components\Logs\" />
+  </ItemGroup>
+
 </Project>

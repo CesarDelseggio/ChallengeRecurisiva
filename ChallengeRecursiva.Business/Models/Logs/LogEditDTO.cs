@@ -4,7 +4,10 @@ using System.Text;
 
 namespace ChallengeRecursiva.Business.Models.Logs
 {
-    internal class LogEditDTO
+    public class LogEditDTO : BaseDTO
     {
+        public DateTime Date { get; set; }
+        public string Title { get; set; }
+        public string Message { get; set; }
     }
 }
