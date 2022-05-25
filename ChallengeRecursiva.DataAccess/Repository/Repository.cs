@@ -5,28 +5,42 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace ChallengeRecursiva.DataAccess.Repository
 {
     public class Repository<T> : IRepository<T> where T : EntityBase
     {
-        private readonly AppDbContext _context; 
-        
+        private readonly AppDbContext _context;
+
         public Repository(AppDbContext context)
         {
             _context = context;
         }
 
-        public T Get(int id)
+        public async Task<T> Get(int id)
         {
-            return _context.Set<T>().Find(id);
+            return await _context.Set<T>().FindAsync(id);
         }
 
-        public List<T> GetAll(ISpecificationRepository<T> spec)
+        public IQueryable<T> GetAll()
         {
-            var query = ApplySpecification(spec, _context.Set<T>().AsQueryable());
+            return _context.Set<T>().AsQueryable();
+        }
 
-            return query.ToList();
+        public IQueryable<T> GetAll(ISpecificationRepository<T> spec)
+        {
+            return ApplySpecification(spec, _context.Set<T>().AsQueryable());
+        }
+
+        public async Task<int> Count()
+        {
+            return await _context.Set<T>().CountAsync();
+        }
+
+        public async Task<int> Count(ISpecificationRepository<T> spec)
+        {
+            return await _context.Set<T>().CountAsync(spec.Criteria);
         }
 
         public void Insert(T entity)

@@ -4,4 +4,8 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\ChallengeRecursiva.DataAccess\ChallengeRecursiva.DataAccess.csproj" />
+  </ItemGroup>
+
 </Project>

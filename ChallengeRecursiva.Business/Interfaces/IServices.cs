@@ -1,13 +1,19 @@
-﻿using System;
+﻿using ChallengeRecursiva.DataAccess.Data.Models;
+using ChallengeRecursiva.DataAccess.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace ChallengeRecursiva.Business.Interfaces
 {
-    public interface IService<T> where T : class
+    public interface IService<T> where T : EntityBase
     {
-        T Get(int id);
-        List<T> GetAll(ISpecificationService<T> spec);
+        Task<T> Get(int id);
+        Task<List<T>> GetAll();
+        Task<List<T>> GetAll(ISpecificationRepository<T> spec);
+        Task<int> Count();
+        Task<int> Count(ISpecificationRepository<T> spec);
 
         void Insert(T entity);
         void Update(T entity);
