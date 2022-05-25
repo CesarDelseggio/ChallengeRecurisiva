@@ -18,6 +18,7 @@ namespace ChallengeRecursiva.Business
             services.AddDbContext<AppDbContext>(options => 
                 options.UseSqlServer(configuration.GetConnectionString("DefaultConnectionStrings")));
 
+            services.AddScoped<UnitOfWork, UnitOfWork>();
             services.AddScoped<IRepository<Log>, Repository<Log>>();
         }
     }
