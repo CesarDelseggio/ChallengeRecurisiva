@@ -4,4 +4,13 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="6.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ChallengeRecursiva.Common\ChallengeRecursiva.Common.csproj" />
+    <ProjectReference Include="..\ChallengeRecursiva.DataAccess\ChallengeRecursiva.DataAccess.csproj" />
+  </ItemGroup>
+
 </Project>

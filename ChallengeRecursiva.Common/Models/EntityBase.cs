@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
 
-namespace ChallengeRecursiva.DataAccess.Data.Models
+namespace ChallengeRecursiva.Common.Models
 {
     public class EntityBase
     {
