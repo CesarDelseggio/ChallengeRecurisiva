@@ -13,5 +13,15 @@ namespace ChallengeRecursiva.DataAccess
         }
 
         public DbSet<Log> Logs { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<Log>().HasData(
+                new Log() { Date = DateTime.Now, Title = "First Log", Message = "Data for test services" },
+                new Log() { Date = DateTime.Now, Title = "Second Log", Message = "This message is not valid" },
+                new Log() { Date = DateTime.Now, Title = "Third Log", Message = "Data access faild" });
+        }
     }
 }
