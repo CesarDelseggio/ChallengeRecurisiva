@@ -19,6 +19,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ChallengeRecursiva.Common",
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ChallengeRecursiva.Web", "ChallengeRecursiva.Web\ChallengeRecursiva.Web.csproj", "{D88FA005-667E-46AE-819B-A8C2C6A4884E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChallengeRecursiva.WebMVC", "ChallengeRecursiva.WebMVC\ChallengeRecursiva.WebMVC.csproj", "{BDB359BB-B114-4EB3-9979-2D8CD30D8270}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -41,6 +43,10 @@ Global
 		{D88FA005-667E-46AE-819B-A8C2C6A4884E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D88FA005-667E-46AE-819B-A8C2C6A4884E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D88FA005-667E-46AE-819B-A8C2C6A4884E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BDB359BB-B114-4EB3-9979-2D8CD30D8270}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BDB359BB-B114-4EB3-9979-2D8CD30D8270}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BDB359BB-B114-4EB3-9979-2D8CD30D8270}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BDB359BB-B114-4EB3-9979-2D8CD30D8270}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -50,6 +56,7 @@ Global
 		{3B1FF57C-E1DF-4C54-9911-361FE153B34B} = {1377C35A-929F-4FD7-978B-0AF6DF49DC9E}
 		{4EF53052-38EE-49EC-8F50-4427C5160FEF} = {B2CAB42E-A6F2-43F3-9480-AE7A8FD55DED}
 		{D88FA005-667E-46AE-819B-A8C2C6A4884E} = {A99B2412-BD30-48E7-8689-246FFA3A5DF4}
+		{BDB359BB-B114-4EB3-9979-2D8CD30D8270} = {A99B2412-BD30-48E7-8689-246FFA3A5DF4}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {66941E9B-8C25-44C1-B3EE-3528ED9AF9B0}

@@ -1,0 +1,15 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Selecciona el csv con los datos de la superliga</h1>
+
+    <form enctype="multipart/form-data" method="post" action="Home/UploadFile">
+        <div class="form-group">
+            <input name="File" type="file">
+        </div>
+        
+        <input class="btn btn-primary" type="submit" value="Enviar" />
+    </form>
+</div>

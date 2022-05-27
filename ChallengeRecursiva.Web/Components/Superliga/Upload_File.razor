@@ -1,0 +1,28 @@
+﻿<h3>Añade tu archivo</h3>
+
+<InputFile OnChange="@LoadFile"></InputFile>
+
+@code {
+    private IBrowserFile file;
+
+    protected void LoadFile(InputFileChangeEventArgs e)
+    {
+        file = e.File;
+
+        try
+        {
+            var trustedFileNameForFileStorage = Path.GetRandomFileName();
+            var path = Path.Combine(Environment.CurrentDirectory,
+                    Environment.EnvironmentName, "unsafe_uploads",
+                    trustedFileNameForFileStorage);
+
+            await using FileStream fs = new(path, FileMode.Create);
+            await file.OpenReadStream(maxFileSize).CopyToAsync(fs);
+        }
+        catch (Exception ex)
+        {
+            Logger.LogError("File: {Filename} Error: {Error}", 
+                file.Name, ex.Message);
+        }
+    }
+}
