@@ -1,4 +1,5 @@
-﻿using ChallengeRecursiva.WebMVC.Models;
+﻿using ChallengeRecursiva.Business.Interfaces;
+using ChallengeRecursiva.WebMVC.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -14,10 +15,12 @@ namespace ChallengeRecursiva.WebMVC.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly IImportServices _importServices;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, IImportServices importServices)
         {
             _logger = logger;
+            _importServices = importServices;
         }
 
         public IActionResult Index()
@@ -51,6 +54,17 @@ namespace ChallengeRecursiva.WebMVC.Controllers
                 ViewBag.Message = "Se produjo un error al intentar guardar el archivo";
                 return View("Error");
             }
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Process()
+        
+        {
+            var filePath = Path.Combine(Environment.CurrentDirectory, "wwwroot/App_Data");
+            var fileName = "socios.csv";
+
+            await _importServices.ImportPartners(filePath,fileName);
+            return View("Index");
         }
 
         public IActionResult Privacy()

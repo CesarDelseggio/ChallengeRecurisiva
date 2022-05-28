@@ -18,6 +18,7 @@ namespace ChallengeRecursiva.Business
             services.AddDataAccessServices(configuration);
 
             services.AddScoped<ILogService, LogService>();
+            services.AddScoped<IImportServices, ImportServices>();
 
             //configura automapper with data of MappingProfile
             Mapper.Initialize(cfg => cfg.AddProfile<MappingProfile>());
