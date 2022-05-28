@@ -26,5 +26,16 @@ namespace ChallengeRecursiva.DataAccess.Repository
             }
         }
 
+        private IRepository<Partner> _partnerRepository;
+        public IRepository<Partner> PartnerRepository
+        {
+            get
+            {
+                if (_partnerRepository == null)
+                    _partnerRepository = new Repository<Partner>(_context);
+
+                return _partnerRepository;
+            }
+        }
     }
 }

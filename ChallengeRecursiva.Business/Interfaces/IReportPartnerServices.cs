@@ -8,13 +8,24 @@ namespace ChallengeRecursiva.Business.Interfaces
 {
     public interface IReportPartnerServices
     {
-        //Cantidad total de personas registradas.
+        /// <summary>
+        /// Cantidad total de personas registradas.
+        /// </summary>
+        /// <returns>int</returns>
         Task<int> Exercise1();
-        //El promedio de edad de los socios de Racing.
+
+        /// <summary>
+        /// El promedio de edad de los socios de Racing.
+        /// </summary>
+        /// <returns>int</returns>
         Task<int> Exercise2();
-        //Un listado con las 100 primeras personas casadas, con estudios 
-        //Universitarios, ordenadas de menor a mayor según su edad.Por
-        //cada persona, mostrar: nombre, edad y equipo.
+
+        /// <summary>
+        /// Un listado con las 100 primeras personas casadas, 
+        /// con estudios Universitarios, ordenadas de menor a mayor según su edad.
+        /// Porcada persona, mostrar: nombre, edad y equipo.
+        /// </summary>
+        /// <returns>List of Partners</returns>
         Task<List<Partner>> Exercise3();
         //Un listado con los 5 nombres más comunes entre los hinchas de River.
         Task<List<string>> Exercise4();
