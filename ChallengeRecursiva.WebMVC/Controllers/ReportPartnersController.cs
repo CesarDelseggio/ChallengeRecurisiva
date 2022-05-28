@@ -1,5 +1,6 @@
 ﻿using ChallengeRecursiva.Business.Interfaces;
 using Microsoft.AspNetCore.Mvc;
+using System.Threading.Tasks;
 
 namespace ChallengeRecursiva.WebMVC.Controllers
 {
@@ -16,9 +17,9 @@ namespace ChallengeRecursiva.WebMVC.Controllers
             return View();
         }
 
-        public IActionResult Exercise1()
+        public async Task<ActionResult> Exercise1()
         {
-            var result = _reportPartnerServices.Exercise1();
+            var result = await _reportPartnerServices.Exercise1();
             return View(result);
         }
 

@@ -16,9 +16,9 @@ namespace ChallengeRecursiva.Business.Services
             _unitOfWork = unitOfWork;
         }
 
-        public Task<int> Exercise1()
+        public async Task<int> Exercise1()
         {
-            return _unitOfWork.PartnerRepository.Count();
+            return await _unitOfWork.PartnerRepository.Count();
         }
 
         public Task<int> Exercise2()

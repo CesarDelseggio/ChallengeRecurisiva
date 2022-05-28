@@ -30,7 +30,7 @@ namespace ChallengeRecursiva.Business.Services
             return await _repository.Count();
         }
 
-        public async Task<int> Count(ISpecification<Log> spec)
+        public async Task<int> Count(IQueryParameters<Log> spec)
         {
             return await _repository.Count(spec);
         }
@@ -49,7 +49,7 @@ namespace ChallengeRecursiva.Business.Services
             return AutoMapper.Mapper.Map<List<LogDTO>>(result);
         }
 
-        public async Task<List<LogDTO>> GetAll(ISpecification<Log> spec)
+        public async Task<List<LogDTO>> GetAll(IQueryParameters<Log> spec)
         {
             var result = await _repository.GetAll(spec).ToListAsync();
 

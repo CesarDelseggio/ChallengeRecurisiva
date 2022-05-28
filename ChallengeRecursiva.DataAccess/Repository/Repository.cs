@@ -30,7 +30,7 @@ namespace ChallengeRecursiva.DataAccess.Repository
             return _context.Set<T>().AsQueryable();
         }
 
-        public IQueryable<T> GetAll(ISpecification<T> spec)
+        public IQueryable<T> GetAll(IQueryParameters<T> spec)
         {
             return ApplySpecification(spec, _context.Set<T>().AsQueryable());
         }
@@ -40,9 +40,9 @@ namespace ChallengeRecursiva.DataAccess.Repository
             return await _context.Set<T>().CountAsync();
         }
 
-        public async Task<int> Count(ISpecification<T> spec)
+        public async Task<int> Count(IQueryParameters<T> spec)
         {
-            return await _context.Set<T>().CountAsync(spec.Criteria);
+            return await _context.Set<T>().CountAsync(spec.Where);
         }
 
         public void Insert(T entity)
@@ -66,11 +66,11 @@ namespace ChallengeRecursiva.DataAccess.Repository
             _context.Set<T>().RemoveRange(query);
         }
 
-        private IQueryable<T> ApplySpecification(ISpecification<T> spec, IQueryable<T> query)
+        private IQueryable<T> ApplySpecification(IQueryParameters<T> spec, IQueryable<T> query)
         {
             if (spec is null) return query;
 
-            if (spec.Criteria != null) query = query.Where(spec.Criteria);
+            if (spec.Where != null) query = query.Where(spec.Where);
 
             foreach (var item in spec.Includes)
             {
