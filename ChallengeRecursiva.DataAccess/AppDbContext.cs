@@ -13,11 +13,12 @@ namespace ChallengeRecursiva.DataAccess
         }
 
         public DbSet<Log> Logs { get; set; }
-
+        public DbSet<Partner> Partners { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
 
+            //Seed data for test database is created.
             modelBuilder.Entity<Log>().HasData(
                 new Log() { Id = 1, Date = DateTime.Now, Title = "First Log", Message = "Data for test services" },
                 new Log() { Id = 2, Date = DateTime.Now, Title = "Second Log", Message = "This message is not valid" },
