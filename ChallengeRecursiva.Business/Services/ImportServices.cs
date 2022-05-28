@@ -24,7 +24,46 @@ namespace ChallengeRecursiva.Business.Services
 
         public async Task<bool> ImportPartners(string filePath, string fileName = defaultFileName)
         {
-            throw new NotImplementedException();
+            var connection = _configuration.GetConnectionString("DefaultConnectionStrings");
+            var fullPath = Path.Combine(filePath, fileName);
+
+            try
+            {    
+                var fileLines = File.ReadAllLines(fullPath);
+
+                if (fileLines.Length == 0) return false;
+
+                //Clear all previus data;
+
+                var table = new DataTable();
+
+                //Add column names;
+                table.Columns.Add("Id", typeof(int));
+                table.Columns.Add("Name");
+                table.Columns.Add("Age",typeof(int));
+                table.Columns.Add("Team");
+                table.Columns.Add("CivilStatus");
+                table.Columns.Add("StudiesLevel");
+
+                string line;
+                //ReadFile.
+                for (int i = 0; i < fileLines.Length; i++)
+                {
+                    //Add Id property
+                    line = $"{i+1};" + fileLines[i];
+                    table.Rows.Add(line.Split(';'));
+                }
+                
+                var sqlBulk = new SqlBulkCopy(connection);
+                sqlBulk.DestinationTableName = "Partners";
+                await sqlBulk.WriteToServerAsync(table);
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
         }
     }
 }
