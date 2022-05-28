@@ -49,7 +49,7 @@ namespace ChallengeRecursiva.WebMVC.Controllers
                 if (await _importServices.ImportPartners(_filePath, _fileName) == false)
                     return View("Error", "No se pudo procesar el archivo");
 
-                return View("Resume");
+                return RedirectToAction("Index", "ReportPartners");
             }
             catch (Exception ex)
             {
