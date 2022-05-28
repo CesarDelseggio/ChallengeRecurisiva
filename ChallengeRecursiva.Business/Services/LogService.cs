@@ -44,16 +44,16 @@ namespace ChallengeRecursiva.Business.Services
 
         public async Task<List<LogDTO>> GetAll()
         {
-            var result = await _repository.GetAll().ToListAsync();
+            var result = await _repository.GetAll();
 
-            return AutoMapper.Mapper.Map<List<LogDTO>>(result);
+            return AutoMapper.Mapper.Map<List<LogDTO>>(result.ToListAsync());
         }
 
         public async Task<List<LogDTO>> GetAll(IQueryParameters<Log> spec)
         {
-            var result = await _repository.GetAll(spec).ToListAsync();
+            var result = await _repository.GetAll(spec);
 
-            return AutoMapper.Mapper.Map<List<LogDTO>>(result);
+            return AutoMapper.Mapper.Map<List<LogDTO>>(result.ToListAsync());
         }
 
         public void Insert(LogEditDTO entity)

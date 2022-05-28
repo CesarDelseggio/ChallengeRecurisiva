@@ -15,6 +15,10 @@ namespace ChallengeRecursiva.Common.Specification
 
         public List<string> IncludeNames { get; set; } = new List<string>();
 
+        public Expression<Func<T, object>> OrderBy { get; set; }
+
+        public bool OrderDescending { get; set; }
+
         public int Skip { get; private set; } = 0;
 
         public int Take { get; private set; } = 100;

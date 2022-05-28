@@ -1,0 +1,32 @@
+﻿@using ChallengeRecursiva.Business.Models.Parteners
+@model List<PartnerAgregateDto>
+@{
+    ViewData["Title"] = "Exercise2";
+}
+
+<h1>Listado, ordenado de mayor a menor según la cantidad de 
+socios, que enumere, junto con cada equipo, el promedio de edad 
+de sus socios, la menor edad registrada y la mayor edad registrada.</h1>
+
+
+<table>
+    <thead>
+        <tr>
+            <td>NOMBRE</td>
+            <td>PROMEDIO EDAD</td>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Team</td>
+                <td>@item.AverageAge</td>
+            </tr>    
+        }
+    </tbody>
+</table>
+
+
+<a class="btn btn-primary" href="~/ReportPartners">Atras</a>

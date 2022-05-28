@@ -25,12 +25,12 @@ namespace ChallengeRecursiva.DataAccess.Repository
             return await _context.Set<T>().FindAsync(id);
         }
 
-        public IQueryable<T> GetAll()
+        public async Task<IQueryable<T>> GetAll()
         {
             return _context.Set<T>().AsQueryable();
         }
 
-        public IQueryable<T> GetAll(IQueryParameters<T> spec)
+        public async Task<IQueryable<T>> GetAll(IQueryParameters<T> spec)
         {
             return ApplySpecification(spec, _context.Set<T>().AsQueryable());
         }
@@ -82,6 +82,14 @@ namespace ChallengeRecursiva.DataAccess.Repository
                 query.Include(item);
             }
 
+            if(spec.OrderBy != null)
+            {
+                if(spec.OrderDescending)
+                    query = query.OrderByDescending(spec.OrderBy);
+
+                query = query.OrderBy(spec.OrderBy);
+            }
+            
             return query.Skip(spec.Skip)
                 .Take(spec.Take);
         }

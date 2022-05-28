@@ -1,0 +1,15 @@
+﻿@model List<string>
+@{
+    ViewData["Title"] = "Exercise2";
+}
+
+<h1>Listado con los 5 nombres más comunes entre los hinchas de River.</h1>
+
+<ul>
+    @foreach (var item in Model)
+    {
+        <li>@item</li>   
+    }
+</ul>
+
+<a class="btn btn-primary" href="~/ReportPartners">Atras</a>

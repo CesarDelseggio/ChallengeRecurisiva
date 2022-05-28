@@ -23,26 +23,26 @@ namespace ChallengeRecursiva.WebMVC.Controllers
             return View(result);
         }
 
-        public IActionResult Exercise2()
+        public async Task<ActionResult> Exercise2()
         {
-            var result = _reportPartnerServices.Exercise2();
+            var result = await _reportPartnerServices.Exercise2();
             return View(result);
         }
 
-        public IActionResult Exercise3()
+        public async Task<ActionResult> Exercise3()
         {
-            var result = _reportPartnerServices.Exercise3();
+            var result = await _reportPartnerServices.Exercise3();
             return View(result);
         }
 
-        public IActionResult Exercise4()
+        public async Task<ActionResult> Exercise4()
         {
-            var result = _reportPartnerServices.Exercise4();
+            var result = await _reportPartnerServices.Exercise4();
             return View(result);
         }
-        public IActionResult Exercise5()
+        public async Task<ActionResult> Exercise5()
         {
-            var result = _reportPartnerServices.Exercise5();
+            var result = await _reportPartnerServices.Exercise5();
             return View(result);
         }
     }

@@ -1,4 +1,6 @@
-﻿using ChallengeRecursiva.DataAccess.Data.Models;
+﻿using ChallengeRecursiva.Business.Models.Parteners;
+using ChallengeRecursiva.Business.Services;
+using ChallengeRecursiva.DataAccess.Data.Models;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -18,7 +20,7 @@ namespace ChallengeRecursiva.Business.Interfaces
         /// El promedio de edad de los socios de Racing.
         /// </summary>
         /// <returns>int</returns>
-        Task<int> Exercise2();
+        Task<double> Exercise2();
 
         /// <summary>
         /// Un listado con las 100 primeras personas casadas, 
@@ -26,14 +28,14 @@ namespace ChallengeRecursiva.Business.Interfaces
         /// Porcada persona, mostrar: nombre, edad y equipo.
         /// </summary>
         /// <returns>List of Partners</returns>
-        Task<List<Partner>> Exercise3();
+        Task<List<PartnerDto>> Exercise3();
         //Un listado con los 5 nombres más comunes entre los hinchas de River.
         Task<List<string>> Exercise4();
 
         //Un listado, ordenado de mayor a menor según la cantidad de 
         //socios, que enumere, junto con cada equipo, el promedio de edad
         //de sus socios, la menor edad registrada y la mayor edad registrada.
-        Task<List<Partner>> Exercise5();
+        Task<List<PartnerAgregateDto>> Exercise5();
 
     }
 }
