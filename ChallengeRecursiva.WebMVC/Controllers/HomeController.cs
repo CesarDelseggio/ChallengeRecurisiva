@@ -17,10 +17,15 @@ namespace ChallengeRecursiva.WebMVC.Controllers
         private readonly ILogger<HomeController> _logger;
         private readonly IImportServices _importServices;
 
+        private string _filePath = Path.Combine(Environment.CurrentDirectory, "wwwroot/App_Data");
+        private string _fileName = "socios.csv";
+        private string _fullFilePath;
         public HomeController(ILogger<HomeController> logger, IImportServices importServices)
         {
             _logger = logger;
             _importServices = importServices;
+
+            _fullFilePath = Path.Combine(_filePath, _fileName);
         }
 
         public IActionResult Index()
@@ -33,40 +38,27 @@ namespace ChallengeRecursiva.WebMVC.Controllers
         {
             try
             {
-                if (file.Length > 0)
-                {
-                    var filePath = Path.Combine(Environment.CurrentDirectory, "wwwroot/App_Data/socios.csv");
+                if (file.Length <= 0)
+                    return View("Error", "El archivo no contiene información");
 
-                    using (var stream = System.IO.File.Create(filePath))
-                    {
-                        await file.CopyToAsync(stream);
-                    }
-                    return View("UploadComplete");
-                }
-                else
+                using (var stream = System.IO.File.Create(_fullFilePath))
                 {
-                    ViewBag.Message = "El archivo no contiene información";
-                    return View("Error");
+                    await file.CopyToAsync(stream);
                 }
+
+                if (await _importServices.ImportPartners(_filePath, _fileName) == false)
+                    return View("Error", "No se pudo procesar el archivo");
+
+                return View("Resume");
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                ViewBag.Message = "Se produjo un error al intentar guardar el archivo";
-                return View("Error");
+                return View("Error", "Se produjo un error al intentar guardar el archivo");    
             }
         }
 
-        [HttpGet]
-        public async Task<IActionResult> Process()
-        
-        {
-            var filePath = Path.Combine(Environment.CurrentDirectory, "wwwroot/App_Data");
-            var fileName = "socios.csv";
 
-            await _importServices.ImportPartners(filePath,fileName);
-            return View("Index");
-        }
-
+        //Default actions
         public IActionResult Privacy()
         {
             return View();
