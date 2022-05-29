@@ -1,4 +1,6 @@
 ﻿using ChallengeRecursiva.Business.Interfaces;
+using ChallengeRecursiva.DataAccess;
+using ChallengeRecursiva.DataAccess.Data.Models;
 using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.Configuration;
 using System;
@@ -27,13 +29,14 @@ namespace ChallengeRecursiva.Business.Services
             var connection = _configuration.GetConnectionString("DefaultConnectionStrings");
             var fullPath = Path.Combine(filePath, fileName);
 
+            if (File.Exists(fullPath))
+                await RemoveOldData();
+
             try
             {
                 var fileLines = File.ReadAllLines(fullPath, Encoding.UTF7);
 
                 if (fileLines.Length == 0) return false;
-
-                //Clear all previus data;
 
                 var table = new DataTable();
 
@@ -64,6 +67,25 @@ namespace ChallengeRecursiva.Business.Services
             {
                 return false;
             }
+        }
+
+        private async Task<int> RemoveOldData()
+        {
+            var sqlText = "Delete From Partners";
+
+            try
+            {
+                using (var conn = new SqlConnection(_configuration.GetConnectionString("DefaultConnectionStrings")))
+                {
+                    conn.Open();
+                    var command = new SqlCommand(sqlText, conn);
+                    return await command.ExecuteNonQueryAsync();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }   
         }
     }
 }
