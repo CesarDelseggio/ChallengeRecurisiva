@@ -4,35 +4,45 @@
     ViewData["Title"] = "Exercise2";
 }
 
-<h1>Listado, ordenado de mayor a menor según la cantidad de 
-socios, que enumere, junto con cada equipo, el promedio de edad 
-de sus socios, la menor edad registrada y la mayor edad registrada.</h1>
-
-
-<table class="table table-bordered">
-    <thead>
-        <tr>
-            <td>EQUIO</td>
-            <td>SOCIOS</td>
-            <td>PROMEDIO DE EDAD</td>
-            <td>MAYOR EDAD</td>
-            <td>MENOR EDAD</td>
-        </tr>
-    </thead>
-
-    <tbody>
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>@item.Team</td>
-                <td>@item.PartnerCount</td>
-                <td>@item.AverageAge</td>
-                <td>@item.MaxAge</td>
-                <td>@item.MinAge</td>
-            </tr>    
+<div class="row">
+    <div class="col-4">
+        @{
+            Html.RenderPartial("ReportsMenu");
         }
-    </tbody>
-</table>
+    </div>
+    <div class="col-8">
+        <h1>Listado, ordenado de mayor a menor según la cantidad de 
+        socios, que enumere, junto con cada equipo, el promedio de edad 
+        de sus socios, la menor edad registrada y la mayor edad registrada.</h1>
 
 
-<a class="btn btn-primary" href="~/ReportPartners">Atras</a>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <td>EQUIO</td>
+                    <td>SOCIOS</td>
+                    <td>PROMEDIO DE EDAD</td>
+                    <td>MAYOR EDAD</td>
+                    <td>MENOR EDAD</td>
+                </tr>
+            </thead>
+
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.Team</td>
+                        <td>@item.PartnerCount</td>
+                        <td>@item.AverageAge</td>
+                        <td>@item.MaxAge</td>
+                        <td>@item.MinAge</td>
+                    </tr>    
+                }
+            </tbody>
+        </table>
+
+
+        <a class="btn btn-primary" href="~/ReportPartners">Atras</a>
+
+    </div>
+</div>

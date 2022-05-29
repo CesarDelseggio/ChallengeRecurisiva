@@ -2,15 +2,10 @@
     ViewData["Title"] = "Reportes";
 }
 
-<h2>Resultados de procesar el archivo</h2>
-
-<div>
-    <a href="ReportPartners/Exercise1">Ejercicio 1</a>
-    <a href="ReportPartners/Exercise2">Ejercicio 2</a>
-    <a href="ReportPartners/Exercise3">Ejercicio 3</a>
-    <a href="ReportPartners/Exercise4">Ejercicio 4</a>
-    <a href="ReportPartners/Exercise5">Ejercicio 5</a>
+<div class="row">
+    <div class="col-4">
+        @{
+            Html.RenderPartial("ReportsMenu");
+        }
+    </div>
 </div>
-
-@{
-}

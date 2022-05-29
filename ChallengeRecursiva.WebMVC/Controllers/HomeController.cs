@@ -40,7 +40,7 @@ namespace ChallengeRecursiva.WebMVC.Controllers
         {
             try
             {
-                if (file.Length <= 0)
+                if (file == null || file.Length <= 0)
                     return View("Error", "El archivo no contiene información");
 
                 using (var stream = System.IO.File.Create(_fullFilePath))
@@ -49,7 +49,7 @@ namespace ChallengeRecursiva.WebMVC.Controllers
                 }
 
                 if (await _importServices.ImportPartners(_filePath, _fileName) == false)
-                    return View("Error", "No se pudo procesar el archivo");
+                    return View("Error", "No se pudo procesar el archivo, verifique que sea el formato correcto");
 
                 return RedirectToAction("Index", "ReportPartners");
             }

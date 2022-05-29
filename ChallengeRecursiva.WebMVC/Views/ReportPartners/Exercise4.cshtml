@@ -3,13 +3,22 @@
     ViewData["Title"] = "Exercise2";
 }
 
-<h1>Listado con los 5 nombres más comunes entre los hinchas de River.</h1>
+<div class="row">
+    <div class="col-4">
+        @{
+            Html.RenderPartial("ReportsMenu");
+        }
+    </div>
+    <div class="col-8">
+        <h1>Listado con los 5 nombres más comunes entre los hinchas de River.</h1>
 
-<ul>
-    @foreach (var item in Model)
-    {
-        <li>@item</li>   
-    }
-</ul>
+        <ul>
+            @foreach (var item in Model)
+            {
+                <li>@item</li>   
+            }
+        </ul>
 
-<a class="btn btn-primary" href="~/ReportPartners">Atras</a>
+        <a class="btn btn-primary" href="~/ReportPartners">Atras</a>
+    </div>
+</div>
