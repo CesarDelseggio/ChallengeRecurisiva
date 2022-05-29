@@ -8,4 +8,17 @@
     <Folder Include="wwwroot\App_Data\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="3.1.25">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.5" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ChallengeRecursiva.Business\ChallengeRecursiva.Business.csproj" />
+    <ProjectReference Include="..\ChallengeRecursiva.Common\ChallengeRecursiva.Common.csproj" />
+  </ItemGroup>
+
 </Project>

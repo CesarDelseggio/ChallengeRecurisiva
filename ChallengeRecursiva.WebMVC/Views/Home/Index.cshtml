@@ -2,14 +2,22 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Selecciona el csv con los datos de la superliga</h1>
-
-    <form enctype="multipart/form-data" method="post" action="Home/UploadFile">
-        <div class="form-group">
-            <input name="File" type="file">
-        </div>
+<div class="row">
+    <div class="col-6">
+        <div class="card mb-4 shadow-sm">
+          <div class="card-header">
+            <h4 class="my-0 font-weight-normal">Subir Archivo</h4>
+          </div>
+          <div class="card-body">
+            <h1 class="card-title pricing-card-title">Selecciona el csv con los datos de la superliga</h1>
+            <form enctype="multipart/form-data" method="post" action="Home/UploadFile">
+                <div class="form-group">
+                    <input name="File" type="file" class="form-control-file">
+                </div>
         
-        <input class="btn btn-primary" type="submit" value="Enviar" />
-    </form>
+                <input class="btn btn-primary btn-block" type="submit" value="Enviar" />
+            </form>
+          </div>
+        </div>
+    </div>
 </div>

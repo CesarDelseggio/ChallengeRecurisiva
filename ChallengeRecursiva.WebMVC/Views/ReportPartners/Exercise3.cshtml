@@ -1,0 +1,41 @@
+﻿@using ChallengeRecursiva.Business.Models.Parteners
+@model List<PartnerDto>
+@{
+    ViewData["Title"] = "Exercise2";
+}
+
+<div class="row">
+    <div class="col-4">
+        @{
+            Html.RenderPartial("ReportsMenu");
+        }
+    </div>
+    <div class="col-8">
+        <h1>Listado con las 100 primeras personas casadas, con estudios 
+        Universitarios, ordenadas de menor a mayor según su edad.</h1>
+
+        <table class="table table-bordered">
+        <thead>
+            <tr>
+                <td>NOMBRE</td>
+                <td>EDAD</td>
+                <td>EQUIPO</td>
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.Name</td>
+                    <td>@item.Age</td>
+                    <td>@item.Team</td>
+                </tr>    
+            }
+        </tbody>
+    </table>
+
+        <a class="btn btn-primary" href="~/ReportPartners">Cerrar</a>
+    </div>
+</div>
+

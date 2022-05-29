@@ -1,4 +1,5 @@
-﻿using ChallengeRecursiva.WebMVC.Models;
+﻿using ChallengeRecursiva.Business.Interfaces;
+using ChallengeRecursiva.WebMVC.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -14,10 +15,19 @@ namespace ChallengeRecursiva.WebMVC.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly IImportServices _importServices;
 
-        public HomeController(ILogger<HomeController> logger)
+        private string _filePath = Path.Combine(Environment.CurrentDirectory, "wwwroot/App_Data");
+        private string _fileName = "socios.csv";
+        private string _fullFilePath;
+        public HomeController(ILogger<HomeController> logger, IImportServices importServices, ILogService logService)
         {
             _logger = logger;
+            _importServices = importServices;
+
+            _fullFilePath = Path.Combine(_filePath, _fileName);
+
+            logService.Get(1).Wait();
         }
 
         public IActionResult Index()
@@ -30,29 +40,27 @@ namespace ChallengeRecursiva.WebMVC.Controllers
         {
             try
             {
-                if (file.Length > 0)
-                {
-                    var filePath = Path.Combine(Environment.CurrentDirectory, "wwwroot/App_Data/socios.csv");
+                if (file == null || file.Length <= 0)
+                    return View("Error", "El archivo no contiene información");
 
-                    using (var stream = System.IO.File.Create(filePath))
-                    {
-                        await file.CopyToAsync(stream);
-                    }
-                    return View("UploadComplete");
-                }
-                else
+                using (var stream = System.IO.File.Create(_fullFilePath))
                 {
-                    ViewBag.Message = "El archivo no contiene información";
-                    return View("Error");
+                    await file.CopyToAsync(stream);
                 }
+
+                if (await _importServices.ImportPartners(_filePath, _fileName) == false)
+                    return View("Error", "No se pudo procesar el archivo, verifique que sea el formato correcto");
+
+                return RedirectToAction("Index", "ReportPartners");
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                ViewBag.Message = "Se produjo un error al intentar guardar el archivo";
-                return View("Error");
+                return View("Error", "Se produjo un error al intentar guardar el archivo");    
             }
         }
 
+
+        //Default actions
         public IActionResult Privacy()
         {
             return View();

@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace ChallengeRecursiva.Business.Interfaces
 {
-    internal interface IImportData
+    public interface IImportServices
     {
+        Task<bool> ImportPartners(string filePath, string fileName);
     }
 }

@@ -12,10 +12,10 @@ namespace ChallengeRecursiva.DataAccess.Interfaces
     public interface IRepository<T> where T : EntityBase
     {
         Task<T> Get(int id);
-        IQueryable<T> GetAll();
-        IQueryable<T> GetAll(ISpecification<T> spec);
+        Task<IQueryable<T>> GetAll();
+        Task<IQueryable<T>> GetAll(IQueryParameters<T> spec);
         Task<int> Count();
-        Task<int> Count(ISpecification<T> spec);
+        Task<int> Count(IQueryParameters<T> spec);
 
         void Insert(T entity);
         void Update(T entity);

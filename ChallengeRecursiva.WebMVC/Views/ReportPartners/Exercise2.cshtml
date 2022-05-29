@@ -1,0 +1,19 @@
+﻿@model double
+@{
+    ViewData["Title"] = "Exercise2";
+}
+
+<div class="row">
+    <div class="col-4">
+        @{
+            Html.RenderPartial("ReportsMenu");
+        }
+    </div>
+    <div class="col-8">
+        <h1>El promedio de edad de los socios de Racing es @Model</h1>
+
+        <a class="btn btn-primary" href="~/ReportPartners">Cerrar</a>    
+    </div>
+</div>
+
+

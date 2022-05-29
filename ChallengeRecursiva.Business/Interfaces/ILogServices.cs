@@ -15,9 +15,9 @@ namespace ChallengeRecursiva.Business.Interfaces
     {
         Task<LogDetailDTO> Get(int id);
         Task<List<LogDTO>> GetAll();
-        Task<List<LogDTO>> GetAll(ISpecification<Log> spec);
+        Task<List<LogDTO>> GetAll(IQueryParameters<Log> spec);
         Task<int> Count();
-        Task<int> Count(ISpecification<Log> spec);
+        Task<int> Count(IQueryParameters<Log> spec);
 
         void Insert(LogEditDTO entity);
         void Update(LogEditDTO entity);
