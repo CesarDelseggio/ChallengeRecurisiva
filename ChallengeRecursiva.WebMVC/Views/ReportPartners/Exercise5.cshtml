@@ -9,11 +9,14 @@ socios, que enumere, junto con cada equipo, el promedio de edad
 de sus socios, la menor edad registrada y la mayor edad registrada.</h1>
 
 
-<table>
+<table class="table table-bordered">
     <thead>
         <tr>
-            <td>NOMBRE</td>
-            <td>PROMEDIO EDAD</td>
+            <td>EQUIO</td>
+            <td>SOCIOS</td>
+            <td>PROMEDIO DE EDAD</td>
+            <td>MAYOR EDAD</td>
+            <td>MENOR EDAD</td>
         </tr>
     </thead>
 
@@ -22,7 +25,10 @@ de sus socios, la menor edad registrada y la mayor edad registrada.</h1>
         {
             <tr>
                 <td>@item.Team</td>
+                <td>@item.PartnerCount</td>
                 <td>@item.AverageAge</td>
+                <td>@item.MaxAge</td>
+                <td>@item.MinAge</td>
             </tr>    
         }
     </tbody>

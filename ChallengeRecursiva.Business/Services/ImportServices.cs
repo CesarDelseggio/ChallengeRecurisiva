@@ -28,8 +28,8 @@ namespace ChallengeRecursiva.Business.Services
             var fullPath = Path.Combine(filePath, fileName);
 
             try
-            {    
-                var fileLines = File.ReadAllLines(fullPath);
+            {
+                var fileLines = File.ReadAllLines(fullPath, Encoding.UTF7);
 
                 if (fileLines.Length == 0) return false;
 

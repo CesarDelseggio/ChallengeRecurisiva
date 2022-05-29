@@ -20,12 +20,14 @@ namespace ChallengeRecursiva.WebMVC.Controllers
         private string _filePath = Path.Combine(Environment.CurrentDirectory, "wwwroot/App_Data");
         private string _fileName = "socios.csv";
         private string _fullFilePath;
-        public HomeController(ILogger<HomeController> logger, IImportServices importServices)
+        public HomeController(ILogger<HomeController> logger, IImportServices importServices, ILogService logService)
         {
             _logger = logger;
             _importServices = importServices;
 
             _fullFilePath = Path.Combine(_filePath, _fileName);
+
+            logService.Get(1).Wait();
         }
 
         public IActionResult Index()

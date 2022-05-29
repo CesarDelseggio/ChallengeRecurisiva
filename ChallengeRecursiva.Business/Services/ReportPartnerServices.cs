@@ -36,18 +36,13 @@ namespace ChallengeRecursiva.Business.Services
 
         public async Task<List<PartnerDto>> Exercise3()
         {
-            //Define Query
-            var query = new QueryParameters<Partner>();
-            query.Where = x => x.CivilStatus.ToUpper() == "CASADO"
-                                && x.StudiesLevel.ToUpper() == "UNIVERSITARIO";
-            query.OrderBy = x => x.Age;
-            query.OrderDescending = false;
-            query.SetPage(1, 100);
-
-            //Get data for repository.
-            var partners = await _unitOfWork.PartnerRepository.GetAll(query);
+            //Get Queryable for repository.
+            var partners = await _unitOfWork.PartnerRepository.GetAll();
 
             var result = from p in partners
+                         where p.CivilStatus.ToUpper() == "CASADO" &&
+                               p.StudiesLevel.ToUpper() == "UNIVERSITARIO"
+                         orderby p.Age
                          select new PartnerDto {
                              Name = p.Name,
                              Age = p.Age,
@@ -56,7 +51,7 @@ namespace ChallengeRecursiva.Business.Services
                              StudiesLevel = p.StudiesLevel
                          };
             
-            return result.ToList();
+            return result.Take(100).ToList();
         }
 
         public async Task<List<string>> Exercise4()
@@ -82,7 +77,10 @@ namespace ChallengeRecursiva.Business.Services
                         select new PartnerAgregateDto()
                         { 
                             Team = partnersGroup.Key,
-                            AverageAge = partnersGroup.Average(x=>x.Age)
+                            PartnerCount = partnersGroup.Count(),
+                            AverageAge = partnersGroup.Average(x=>x.Age),
+                            MaxAge = partnersGroup.Max(x=>x.Age),
+                            MinAge = partnersGroup.Min(x => x.Age)
                         };
 
             return query.ToList();

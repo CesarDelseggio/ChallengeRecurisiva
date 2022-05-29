@@ -9,7 +9,7 @@ namespace ChallengeRecursiva.DataAccess
         public AppDbContext(DbContextOptions<AppDbContext> options) 
             : base(options)
         {
-
+            Database.EnsureCreated();
         }
 
         public DbSet<Log> Logs { get; set; }
